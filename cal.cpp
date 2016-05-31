@@ -77,7 +77,7 @@ void displayBlanks(int blanksCount) {
   }
 }
 
-int displayFirstWeek(int blanksCount) {
+int displayFirstWeekDays(int blanksCount) {
   int day = 0;
   for (int i = 0; i < (7 - blanksCount); ++i) {
     cout << setw(4) << ++day;
@@ -95,16 +95,12 @@ void displayRemainingDays(int day, int daysInMonth) {
   }
 }
 
-void displayDays(int offset, int daysInMonth) {
-  int blanksCount = getBlanksCount(offset);
-  displayBlanks(blanksCount);
-  int day = displayFirstWeek(blanksCount);
-  displayRemainingDays(day, daysInMonth);
-}
-
 void displayCalendar(int month, int year, int offset, int daysInMonth) {
   displayHeader(month, year);
-  displayDays(offset, daysInMonth);
+  int blanksCount = getBlanksCount(offset);
+  displayBlanks(blanksCount);
+  int day = displayFirstWeekDays(blanksCount);
+  displayRemainingDays(day, daysInMonth);
 }
 
 int main() {
